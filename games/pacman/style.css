@@ -1,0 +1,15 @@
+.row div{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	padding:10px;
+}
+
+.brick {
+	background: blue;
+}
+
+div.coin {
+	background: url(coin.gif) center center no-repeat;
+}
+
