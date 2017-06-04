@@ -11,6 +11,7 @@
 }
 body {
 	background: #000;
+	position:relative;
 }
 
 .row div{
@@ -31,7 +32,8 @@ div.empty {
 	background: none;
 }
 
-div.pacman {
+#pacman {
+	/*position:absolute;*/
 	background: url(pacman.png) center center no-repeat;
 	background-size: 90% 90%;
 }
