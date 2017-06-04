@@ -4,13 +4,13 @@
 	<title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="app.js"defer></script>
+	<!-- <script type="text/javascript" src="app.js"defer></script> -->
 </head>
 <body>
 
 
 <div id="world"></div>
-
+<div id="pacman"></div>
 	<!-- 
 		To do:
 
@@ -20,15 +20,20 @@
 <script type="text/javascript">
 	var world = [
 		[2,2,2,2,2,2,2,2,2,2,2,2,2],
-		[2,1,1,1,2,1,2,1,1,1,1,1,2],
+		[2,0,1,1,2,1,2,1,1,1,1,1,2],
 		[2,2,2,1,2,1,2,1,0,1,1,1,2],
-		[2,1,1,1,2,1,9,1,1,1,1,1,2],
+		[2,1,1,1,2,1,2,1,1,1,1,1,2],
 		[2,1,1,0,2,1,1,1,1,1,1,1,2],
 		[2,1,1,1,2,2,2,1,1,1,2,1,2],
 		[2,1,1,1,1,1,1,0,1,1,1,1,2],
 		[2,1,2,1,1,1,1,1,1,1,1,1,2],
 		[2,2,2,2,2,2,2,2,2,2,2,2,2]
 	];
+
+	var pacman = {
+		x: 40,
+		y: 40
+	};
 
 	function displayWorld(){
 		var output = '';
@@ -44,9 +49,7 @@
 			  output +="\n\t<div class='coin'></div>";
 			} else if(world[i][j] == 0) {
 			  output +="\n\t<div class='empty'></div>";
-			} else if(world[i][j] == 9) {
-			  output +="\n\t<div id='pacman'></div>";
-			}
+			} 
 		  }
 
 			output +="\n</div>";
@@ -55,8 +58,37 @@
 		document.getElementById("world").innerHTML = output;
 	};
 
+	function displayPacman() {
+		document.getElementById("pacman").style.left = pacman.x +"px";
+		document.getElementById("pacman").style.top = pacman.y +"px";
+	}
 
 	displayWorld();
+	displayPacman();
+
+	document.onkeydown = function(e){
+		// down 
+		if(e.keyCode == 40) {
+			pacman.y +=5;
+			displayPacman();
+		}
+		// up - .keyCode === 38
+		if(e.keyCode == 38) {
+			pacman.y -=5;
+			displayPacman();
+		}
+		// left - .keyCode == 37
+		if(e.keyCode == 37) {
+			pacman.x -=5;
+			displayPacman();
+		}
+		// right - .keyCode == 39
+		if(e.keyCode == 39) {
+			pacman.x +=5;
+			displayPacman();
+		}
+		console.log(e.keyCode);
+	}
 
 </script>
 
