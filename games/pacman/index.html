@@ -11,6 +11,7 @@
 
 <div id="world"></div>
 <div id="pacman"></div>
+<div id="score">0</div>
 	<!-- 
 		To do:
 
@@ -31,8 +32,8 @@
 	];
 
 	var pacman = {
-		x: 40,
-		y: 40
+		x: 1,
+		y: 1
 	};
 
 	function displayWorld(){
@@ -59,8 +60,8 @@
 	};
 
 	function displayPacman() {
-		document.getElementById("pacman").style.left = pacman.x +"px";
-		document.getElementById("pacman").style.top = pacman.y +"px";
+		document.getElementById("pacman").style.left = pacman.x*20 +"px";
+		document.getElementById("pacman").style.top = pacman.y*20 +"px";
 	}
 
 	displayWorld();
@@ -68,26 +69,29 @@
 
 	document.onkeydown = function(e){
 		// down 
-		if(e.keyCode == 40) {
-			pacman.y +=5;
-			displayPacman();
+		if(e.keyCode == 40 && world[pacman.y+1][pacman.x] !== 2) {
+			pacman.y++;
 		}
 		// up - .keyCode === 38
-		if(e.keyCode == 38) {
-			pacman.y -=5;
-			displayPacman();
+		if(e.keyCode == 38 && world[pacman.y-1][pacman.x] !== 2) {
+			pacman.y--;
 		}
 		// left - .keyCode == 37
-		if(e.keyCode == 37) {
-			pacman.x -=5;
-			displayPacman();
+		if(e.keyCode == 37 && world[pacman.y][pacman.x-1] !== 2) {
+			pacman.x--;
 		}
 		// right - .keyCode == 39
-		if(e.keyCode == 39) {
-			pacman.x +=5;
-			displayPacman();
+		if(e.keyCode == 39 && world[pacman.y][pacman.x+1] !== 2) {
+			pacman.x++;
 		}
-		console.log(e.keyCode);
+
+		if (world[pacman.y][pacman.x] == 1) {
+			world[pacman.y][pacman.x] = 0;
+			displayWorld();
+		} 
+
+		displayPacman();
+		// console.log(e.keyCode);
 	}
 
 </script>
