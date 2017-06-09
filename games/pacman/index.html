@@ -20,20 +20,22 @@
 	 -->
 <script type="text/javascript">
 	var world = [
-		[2,2,2,2,2,2,2,2,2,2,2,2,2],
-		[2,0,1,1,2,1,2,1,1,1,1,1,2],
-		[2,2,2,1,2,1,2,1,0,1,1,1,2],
-		[2,1,1,1,2,1,2,1,1,1,1,1,2],
-		[2,1,1,0,2,1,1,1,1,1,1,1,2],
-		[2,1,1,1,2,2,2,1,1,1,2,1,2],
-		[2,1,1,1,1,1,1,0,1,1,1,1,2],
-		[2,1,2,1,1,1,1,1,1,1,1,1,2],
-		[2,2,2,2,2,2,2,2,2,2,2,2,2]
+		[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+		[2,0,1,1,2,1,2,1,1,1,2,1,1,1,1,1,2],
+		[2,2,2,1,2,1,2,1,0,1,2,1,1,1,1,1,2],
+		[2,1,1,1,2,1,2,1,1,1,2,1,1,1,1,1,2],
+		[2,1,1,0,2,1,1,1,1,1,1,1,1,1,1,1,2],
+		[2,1,1,1,2,2,2,1,1,1,2,1,1,1,1,1,2],
+		[2,1,1,1,1,1,1,0,2,2,2,1,1,1,1,1,2],
+		[2,1,2,1,1,1,1,1,2,1,1,1,1,1,1,1,2],
+		[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 	];
 
 	var pacman = {
 		x: 1,
-		y: 1
+		y: 1,
+		score: 0,
+		deg: 'pacmanRight'
 	};
 
 	function displayWorld(){
@@ -64,6 +66,14 @@
 		document.getElementById("pacman").style.top = pacman.y*20 +"px";
 	}
 
+	function displayScore(){
+		document.getElementById("score").innerHTML = pacman.score;
+	}
+
+	function rotatePacman(){
+		// pacmanUp, pacmanRight, pacmanDown, pacmanLeft
+	}
+
 	displayWorld();
 	displayPacman();
 
@@ -71,26 +81,34 @@
 		// down 
 		if(e.keyCode == 40 && world[pacman.y+1][pacman.x] !== 2) {
 			pacman.y++;
+			pacman.deg = 90;
 		}
 		// up - .keyCode === 38
 		if(e.keyCode == 38 && world[pacman.y-1][pacman.x] !== 2) {
 			pacman.y--;
+			pacman.deg = -90;
 		}
 		// left - .keyCode == 37
 		if(e.keyCode == 37 && world[pacman.y][pacman.x-1] !== 2) {
 			pacman.x--;
+			pacman.deg = 180;
 		}
 		// right - .keyCode == 39
 		if(e.keyCode == 39 && world[pacman.y][pacman.x+1] !== 2) {
 			pacman.x++;
+			pacman.deg = 0;
 		}
 
 		if (world[pacman.y][pacman.x] == 1) {
 			world[pacman.y][pacman.x] = 0;
+			pacman.score +=10;
 			displayWorld();
+			displayScore();
+
 		} 
 
 		displayPacman();
+		//rotatePacman();
 		// console.log(e.keyCode);
 	}
 

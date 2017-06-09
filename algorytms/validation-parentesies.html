@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		
+		function parseValid(str) {
+			var count=0;
+			var bull = true;
+
+			for(var i=0; i<str.length; i++) {
+				if(str[i] == "("){
+					count++;
+				} else if(str[i] == ")") {
+					count--;
+				}
+				if (count== -1){
+					bull =false;
+					break;
+				}
+			};
+			if(count != 0){
+				bull = false;
+			}
+			return bull;
+		}
+
+		// console.log(parseValid("()(sdfsdf)((nn)"));
+
+
+
+
+		function parseValArray(string){
+			var LP = [];
+			var RP = [];
+			for ( i=0; i<string.length; i++ ){
+				if(string[i] == "(") {
+					LP.push(i);
+				} else if ( string[i] == ")" ) {
+					RP.push(i);
+				}
+			}
+			console.log(LP);
+			console.log(RP);
+			if(LP.length == RP.length) {
+				for ( var i = 0; i < LP.length; i++ ) {
+						if( LP[i] < RP[i] ) {
+							continue;
+						} else {
+							return false;
+						}
+				}
+				return true;
+			} else {
+				return false;
+			}			
+		}
+
+		console.log( parseValArray('(h()) )') );
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

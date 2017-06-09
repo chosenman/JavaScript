@@ -48,5 +48,30 @@ body {
 	height:20px;
 	position: absolute;
 
+
+     /*-webkit-transform:rotate(180deg);*/
+/*    -moz-transform:rotate(180deg);*/
 }
+		.pacmanUp {
+	    -webkit-transform:rotate(-90deg);*/
+		-moz-transform:rotate(-90deg);*/	
+		}
+		.pacmanRight {
+	    -webkit-transform:rotate(0deg);*/
+		-moz-transform:rotate(0deg);*/	
+		}
+		.pacmanDown {
+	    -webkit-transform:rotate(90deg);*/
+		-moz-transform:rotate(90deg);*/	
+		}
+		.pacmanLeft {
+	    -webkit-transform:rotate(180deg);*/
+		-moz-transform:rotate(180deg);*/	
+		}
+
+#score {
+	position: absolute;
+	top:180px;
+	color:#fff;
+} 
 
