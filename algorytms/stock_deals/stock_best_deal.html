@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// given a array of changing price
+		var stockFlow = [ 6, 4, 6, 5, 9, 7, 6, 12, 2, 6, 11, 2, 4 ];
+
+		// helper function that looking for max number in array
+		function findMax(arr){
+			var max = arr[0], index = 0;
+			for( var i = 1; i < arr.length; i++ ){
+				if( max < arr[i] ){
+					max = arr[i];
+					index = i;
+				}
+			}
+			return { max: max, index: index }
+		}
+
+		// console.log( "finding max" );
+		// console.log( findMax(stockFlow) );
+		console.log( "given an stock flow:" );
+		console.log( stockFlow );
+
+		// finding best deal
+		function best(arr){
+			var maxpforit = -999, buy = 0, sell = 0;
+
+			for ( var i = 0; i < arr.length; i++ ) {
+				var result = findMax( arr.slice(i+1, arr.length-1) );
+
+				if( maxpforit < (result.max - arr[i]) ){
+					maxpforit = result.max - arr[i];
+					buy = i;
+					sell = result.index + i + 1;
+				}
+			}
+
+			return {maxProfit: maxpforit, buytime: buy, selltime: sell}
+		}
+
+		console.log( "best deal" );
+		console.log( best(stockFlow) );
+
+	</script>
+
+</body>
+</html>
