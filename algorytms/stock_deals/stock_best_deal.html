@@ -9,6 +9,7 @@
 	<script type="text/javascript">
 		// given a array of changing price
 		var stockFlow = [ 6, 4, 6, 5, 9, 7, 6, 12, 2, 6, 11, 2, 4 ];
+		//					   2 	 4        6.     4. 5.     2
 
 		// helper function that looking for max number in array
 		function findMax(arr){
@@ -46,6 +47,34 @@
 
 		console.log( "best deal" );
 		console.log( best(stockFlow) );
+
+		stockFlow = [ 6, 4, 6, 5, 9, 7, 6, 12, 2, 6, 11, 2, 4 ];
+	//					   2 	 4        6.     4. 5.     2
+
+		// making best deals 
+		function profitMaker(arr){
+			var profit = 0, i = 0;
+			while ( arr[ i + 1 ] > arr[ i ] ){
+				profit += arr[i+1] - arr[i];
+				i++;
+			}
+			return {profit: profit, i: i}
+		}
+
+		// all best deals from flow stock
+		function allBestDeals(arr){
+			var allProfit = 0;
+			var result;
+			for (var i = 0; i < arr.length; i++){
+				result = profitMaker(arr.slice(i, arr.length));
+				allProfit += result.profit;
+				i += result.i;
+			}
+			return allProfit
+		}
+
+		console.log( "all best deals from flow stock:" );
+		console.log( allBestDeals(stockFlow) );
 
 	</script>
 
