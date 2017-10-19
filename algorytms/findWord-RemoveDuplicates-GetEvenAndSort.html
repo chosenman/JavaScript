@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// How can you match substring of a sting?
+
+// javascript approach
+"Hello world".indexOf("world"); //  it will work
+
+// more cross language approach
+function checkMatch(sentence, target){
+    var result = false;
+    var targetWord = target;
+    var splited = sentence.split('');
+
+    for( var j = 0; j < splited.length; j++ ){
+        if( targetWord[0] == splited[j] ) {
+
+            for( var i = 1; i< targetWord.length; i++ ){
+                j++;
+                if( targetWord[i] != splited[j] ){
+                    break; 
+                } 
+                if(i == targetWord.length-1 ){
+                    result = true;
+                }
+            }
+        }
+    }
+    return result
+}
+
+console.log(checkMatch("Hello world", "Hello") );
+
+
+
+
+//===============================================================================
+// How would you remove duplicate members from an array?
+var duplicates = [ "w", "w", "w", "o", "r", "l" ];
+var newArray = [];
+for( var i = 0; i< duplicates.length; i++ ){
+    if(newArray.indexOf(duplicates[i]) == -1){
+        newArray.push(duplicates[i]);
+    }
+}
+console.log(newArray);
+
+
+
+// ===================================
+// Write a function (getEvenAndSort) that can be called on any array, and it returns the subarray of only the even numbers, but sorted.
+// first - even 2, 4, 6, 
+// second - they should be sorted
+var notSorted = [ 5, 2, 1, 4, 6 ];
+
+// helper lowest
+
+// helper only even
+    function onlyEven(arr){
+        var output = [];
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i] % 2 == 0){
+                output.push(arr[i]);
+            }
+        }
+        return output;
+    }
+
+function getEvenAndSort(arr){
+    // find lowest
+    var outputArray = [];
+    var onlyEvenArray = onlyEven(arr);
+    var lowest = onlyEvenArray[0]; // 5
+    
+    for( var i=1; i< arr.length; i++ ){
+        if( lowest > arr[i] && outputArray.indexOf(arr[i]) == -1 ){
+            lowest = arr[i]
+        }
+    }
+
+    outputArray.push(lowest)
+}
+
+</script>
+
+</body>
+</html>
+
