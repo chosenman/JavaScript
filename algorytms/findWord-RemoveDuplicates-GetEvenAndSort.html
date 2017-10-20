@@ -62,9 +62,11 @@ var notSorted = [ 5, 2, 1, 4, 6 ];
 
 // helper lowest
 
-// helper only even
+// make only even
     function onlyEven(arr){
-        var output = [];
+        // before heapify we should make 0 element undefined
+        var output = [undefined];
+        
         for (var i = 0; i < arr.length; i++) {
             if(arr[i] % 2 == 0){
                 output.push(arr[i]);
@@ -73,20 +75,71 @@ var notSorted = [ 5, 2, 1, 4, 6 ];
         return output;
     }
 
+    // sort array in heapify method
+    function heapify(arr){
+        fp = ffp(arr, arr.length-1)
+        while( fp != 1 ){
+            swap( fp, arr );
+            fp = ffp(arr, fp-1)
+        }
+        return arr
+    }
+        // helper heapify functions
+        function findLow( i, arr ){
+            var li = i;
+            if( arr[ li ] < arr[ i*2 ] ) { 
+                li = i + 2 
+            }  
+            if( arr[ li ] < arr[ i*2 + 1 ] ) {
+                li = 2*i + 1
+            }
+            return li
+        }
+
+        function ffp(arr, i){
+            while( arr[ 2*i ] == undefined || arr[ 2*i + 1] == undefined ) {
+                i--
+            }
+            return i
+        }
+
+        function swap(fp, arr){
+            var idx = findLow(fp,arr);
+
+            if ( fp != idx ){
+                var temp = arr[fp];
+                arr[fp] = arr[idx];
+                arr[idx] = temp;
+
+                if ( arr[2*(2*fp)] ) {
+                    swap(2*(2*fp), arr)
+                } 
+                else if( arr[ 2 * (2*fp + 1) ] ){
+                    swap(2 * (2*fp + 1) + 1, arr)
+                } else {
+                   swap( Math.floor(fp/2), arr);
+                }
+
+            } else {
+                return false
+                // swap( Math.floor(fp/2), arr );
+            }
+        }
+
 function getEvenAndSort(arr){
     // find lowest
     var outputArray = [];
-    var onlyEvenArray = onlyEven(arr);
-    var lowest = onlyEvenArray[0]; // 5
-    
-    for( var i=1; i< arr.length; i++ ){
-        if( lowest > arr[i] && outputArray.indexOf(arr[i]) == -1 ){
-            lowest = arr[i]
-        }
-    }
 
-    outputArray.push(lowest)
+    // before heapify we should make 0 element undefined
+    var onlyEvenArray = onlyEven(arr);
+
+    outputArray = heapify(onlyEvenArray);
+
+    return outputArray;
 }
+
+
+console.log( getEvenAndSort(notSorted) )
 
 </script>
 
