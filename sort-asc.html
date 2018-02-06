@@ -7,33 +7,141 @@
 		var arr1 = [4,2,1,3,5];
 		var arr2 = [45,7,30,2,1,3,90,5];
 		var arr3 = [4,92,1,37,5];
+		var unsortedArray = [ 2, 56, 42, 777, 3, 9, 10, 67, 83, 40 ];
 
-function sortAsc(giveArray) {
-		var startArray = giveArray;
-		var finArray = [];
-		var eObj = {};
-
-		function findLowest(arrArg){
-			var min = 0;
-
-			for (var i = 0; i < arrArg.length; i++) {
-				if(arrArg[i] < arrArg[min] && eObj[i] === undefined) {
-					min = i;
-				} else { 
-					continue
-				}
-			}
-				finArray.push(arrArg[min]);
-				eObj[min] = 1;				
-		}
-
-		for (var i = 0; i < startArray.length; i++) {
-			findLowest(startArray);
-		}	
-		return finArray;
+function sort(inputArray){
+	// making for loop
+	var lowest = null;
+	for ( var i = 0; i < inputArray.length; i++ ) {
+		lowest = findLowest( inputArray.slice(i, inputArray.length), i );
+		console.log(lowest);
+		putInFront( lowest , inputArray);
+	}
+	return inputArray
 }
 
+// helper functions
 
+	// put in front
+	function putInFront(lowest, arr){
+		var temp = "";
+		for (var i = 0; i < arr.length; i++) {
+			if( lowest.lowest < arr[i] ) {
+				temp = arr[i];
+				arr[i] = lowest.lowest;
+				arr[lowest.i] = temp;
+				break
+			} 
+		}
+		return null;
+	}
+
+	// find lowest
+	function findLowest(arr, j){
+		var startValue = arr[0];
+		var startIndex = 0;
+		for (var i = 1; i < arr.length; i++) {
+			if(arr[i] < startValue){
+				startValue = arr[i];
+				startIndex = i;
+			}
+		}
+		return { lowest: startValue, i: startIndex + j };
+	}
+
+console.log( sort(unsortedArray) );
+
+
+// old variant
+	// function sortAsc(giveArray) {
+	// 		var startArray = giveArray;
+	// 		var finArray = [];
+	// 		var eObj = {};
+
+	// 		function findLowest(arrArg){
+	// 			var min = 0;
+
+	// 			for (var i = 0; i < arrArg.length; i++) {
+	// 				if(arrArg[i] < arrArg[min] && eObj[i] === undefined) {
+	// 					min = i;
+	// 				} else { 
+	// 					continue
+	// 				}
+	// 			}
+	// 				finArray.push(arrArg[min]);
+	// 				eObj[min] = 1;				
+	// 		}
+
+	// 		for (var i = 0; i < startArray.length; i++) {
+	// 			findLowest(startArray);
+	// 		}	
+	// 		return finArray;
+	// }
+
+//////////////////////////////
+// the same SIMPLE SOrt
+//////////////////////////////
+
+	function compare(a,b){
+    	return a - b;
+	}
+
+	var arrSorted = unsortedArray.sort(compare);
+	console.log(arrSorted)
+
+
+
+	console.log( [8, 7, 8, 34, 9, 2, 5, 7].sort( (a,b)=>a-b ) );
+	console.log( "======================");
+	console.log( "======================");
+
+
+// /////////////////
+		var uary = [ 2, 56, 42, 777, 3, 9, 10, 67, 83, 40 ];
+		console.log( uary );
+
+		function piuSort(a_rr){
+			// loop through array
+			var low = null;
+			for (var i = 0; i < a_rr.length; i++) {
+				low = findLowwest( a_rr.slice(i,a_rr.length), i);
+				console.log(low);
+				pUTinFront(low, a_rr)
+				console.log(a_rr);
+			}
+			return a_rr
+		}
+			// put in front
+			function pUTinFront(low, a_rr){
+				var temp = "";
+				for (var i = 0; i < a_rr.length; i++) {
+
+					if( low.lowest < a_rr[i] ) {
+						// console.log("low.lowest is lower than " + a_rr[i]);
+						// saving current elem arr to temp
+						temp = a_rr[i];
+						a_rr[i] = low.lowest;
+						a_rr[low.i] = temp;
+						break;
+					}
+				}
+				return null;
+			}
+			// find lowest
+			function findLowwest(arr, indexShift){
+				var lowest = arr[0];
+				var index = 0;
+				for (var i = 1; i < arr.length; i++) {
+					if( arr[i] < lowest ) {
+						lowest = arr[i];
+						index = i;
+					}
+				}
+				return { lowest: lowest, i: index + indexShift }
+			}
+
+			console.log( piuSort([ 2, 56, 42, 777, 3, 9, 10, 67, 83, 40 ]) );
+			console.log( sort([ 2, 56, 42, 777, 3, 9, 10, 67, 83, 40 ]) );
 
 	</script>
 </head>

@@ -56,7 +56,7 @@ function iSearch(str) {
 
 				for (var x = i; x <= y; x++) {
 					checkingStr += polSet[x];
-					console.log(checkingStr);
+					// console.log(checkingStr);
 					candidateRam += trueResult[x] + " ";
 					// console.log(candidateRam);
 				}
