@@ -78,6 +78,7 @@ console.log( sort(unsortedArray) );
 	// 		return finArray;
 	// }
 
+
 //////////////////////////////
 // the same SIMPLE SOrt
 //////////////////////////////
@@ -89,6 +90,47 @@ console.log( sort(unsortedArray) );
 	var arrSorted = unsortedArray.sort(compare);
 	console.log(arrSorted)
 
+
+
+// /////////////////
+		var uary = [ 2, 56, 42, 777, 3, 9, 10, 67, 83, 40 ];
+
+		function piuSort(arrInput){
+			// loop through array
+			var tempObj = {};
+			for (var i = 0; i < arrInput.length; i++) {
+				tempObj = findLowwest(arrInput.slice(i,arrInput.length), i);
+				pUTinFront(tempObj, arrInput)
+			}
+			return arrInput
+		}
+			// put in front
+			function pUTinFront(tempObj, arrInput){
+				var temp = "";
+				for (var i = 0; i < arrInput.length; i++) {
+					if( arrInput[tempObj.lIndex] < arrInput[i] ) {
+						temp = arrInput[i];
+						arrInput[i] = tempObj.lowest;
+						arrInput[tempObj.lIndex] = temp;
+						break;
+					}
+				}
+				return null;
+			}
+			// find lowest
+			function findLowwest(arr, indexShift){
+				var answer = {
+					lowest: arr[0],
+					lIndex: 0
+				}
+				for (var i = 1; i < arr.length; i++) {
+					if( arr[i] < answer.lowest ) {
+						answer.lowest = arr[i];
+						answer.lIndex = i + indexShift;
+					}
+				}
+				return answer;
+			}
 
 
 	console.log( [8, 7, 8, 34, 9, 2, 5, 7].sort( (a,b)=>a-b ) );

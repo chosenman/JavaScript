@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+
+    <script type="text/javascript">
+/*
+ * Complete the function below.
+ */
+
+// array of words maker
+function arrayOfWords(string){
+    console.log(string);
+    var arr = [];
+    var w = "";
+
+    for(var i=0; i < string.length; i++){
+        
+
+        if( string[i].charCodeAt(0) != 32) {
+            // console.log("adding: " + string[i]);
+            w = w + string[i];
+        } 
+        if (string[i].charCodeAt(0) == 32 || i == string.length-1){
+
+            // console.log(w);
+            arr.push(w);
+            w = "";
+        }
+    }
+    
+    return arr
+}
+
+function missingWords(s, t) {
+    // making an array of words from "s" ant "t"
+    sArray = arrayOfWords(s);
+    
+    tArray = arrayOfWords(t);
+    
+    missingWords = [];
+
+    for (var i=0; i< sArray.length; i++){
+        if( tArray.indexOf(sArray[i]) == -1 ) {
+            missingWords.push(sArray[i]);
+        }
+    }
+    return missingWords
+    
+}
+
+
+console.log( missingWords("This is a sentence with words", "This sentence") );
+    </script>
+
+</body>
+</html>
