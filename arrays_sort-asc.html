@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+
+	//////////////////////////////
+	// the same SIMPLE SOrt
+	//////////////////////////////
+
+			function compare(a,b){
+		    	return a - b;
+			}
+
+			var arrSorted = unsortedArray.sort(compare);
+			console.log(arrSorted)
+
+			console.log( "======================");
+			console.log( [8, 7, 8, 34, 9, 2, 5, 7].sort( (a,b)=>a-b ) );
+			console.log( "======================");
+
+
+	/* //////////////////////////////
+	SORT with for loops and helper functions
+	*/ //////////////////////////////
+
+		var unsortedArray = [ 2, 56, 42, 777, 3, 9, 10, 2, 56, 42, 777, 67, 83, 40 ];
+
+		function sort(inputArray){
+			// making for loop
+			var lowest = null;
+			for ( var i = 0; i < inputArray.length; i++ ) {
+				lowest = findLowest( inputArray.slice(i, inputArray.length), i );
+				console.log(lowest);
+				putInFront( lowest , inputArray);
+			}
+			return inputArray
+		}
+
+		// helper functions
+
+			// put in front
+			function putInFront(lowest, arr){
+				var temp = "";
+				for (var i = 0; i < arr.length; i++) {
+					if( lowest.lowest < arr[i] ) {
+						temp = arr[i];
+						arr[i] = lowest.lowest;
+						arr[lowest.i] = temp;
+						break
+					} 
+				}
+				return null;
+			}
+
+			// find lowest
+			function findLowest(arr, j){
+				var startValue = arr[0];
+				var startIndex = 0;
+				for (var i = 1; i < arr.length; i++) {
+					if(arr[i] < startValue){
+						startValue = arr[i];
+						startIndex = i;
+					}
+				}
+				return { lowest: startValue, i: startIndex + j };
+			}
+
+		console.log( sort(unsortedArray) );
+
+
+// old variant, haven't finished yet
+
+	// function sortAsc(giveArray) {
+	// 		var startArray = giveArray;
+	// 		var finArray = [];
+	// 		var eObj = {};
+
+	// 		function findLowest(arrArg){
+	// 			var min = 0;
+
+	// 			for (var i = 0; i < arrArg.length; i++) {
+	// 				if(arrArg[i] < arrArg[min] && eObj[i] === undefined) {
+	// 					min = i;
+	// 				} else { 
+	// 					continue
+	// 				}
+	// 			}
+	// 				finArray.push(arrArg[min]);
+	// 				eObj[min] = 1;				
+	// 		}
+
+	// 		for (var i = 0; i < startArray.length; i++) {
+	// 			findLowest(startArray);
+	// 		}	
+	// 		return finArray;
+	// }
+
+	// var unsrtdArray = [ 2, 56, 42, 777, 3, 9, 10, 2, 56, 42, 777, 67, 83, 40 ];
+	// console.log( sortAsc(unsrtdArray) );
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
