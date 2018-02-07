@@ -27,7 +27,7 @@ function findOddBiggestTimes(inputArray) {
   for( let i=0; i<inputArray.length; i++) {
     if (inputArray[i]%2 !== 0) {
 		
-	  let oddCounter = 0;
+      let oddCounter = 0;
       for (let t=0; t<inputArray.length; t++) {
         if (inputArray[t] == inputArray[i]) { oddCounter++;} 
       }
