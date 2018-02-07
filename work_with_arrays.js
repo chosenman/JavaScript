@@ -21,8 +21,8 @@ function findOdd(inputArray) {
 Given an array, find the odd int that appears biggest and an odd number of times. 
 */
 
-function findOdd(inputArray) {
-  let oddCountBigestVale = 0;
+function findOddBiggestTimes(inputArray) {
+  let oddCountBigestTimesVale = 0;
   
   for( let i=0; i<inputArray.length; i++) {
     if (inputArray[i]%2 !== 0) {
@@ -32,11 +32,11 @@ function findOdd(inputArray) {
         if (inputArray[t] == inputArray[i]) { oddCounter++;} 
       }
       if (oddCounter%2 !== 0) {
-        if (oddCounter > oddCountBigestVale) { 
-      			oddCountBigestVale = inputArray[i];
+        if (oddCounter > oddCountBigestTimesVale) { 
+      			oddCountBigestTimesVale = inputArray[i];
       		}
       }
     }
   }
-  return oddCountBigestVale;
+  return oddCountBigestTimesVale;
 }
