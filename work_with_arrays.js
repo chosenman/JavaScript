@@ -1,44 +1,42 @@
-/* Given an array, find the int that appears an odd number of times.
-There will always be only one integer that appears an odd number of times. */
+/* 
+Given an array, find the int that appears an odd number of times.
+There will always be only one integer that appears an odd number of times. 
 
-
-function findOdd(A) {
-  //happy coding!
-  let OperA = A;
-  let oddCountBigrVale = 0;
+*/
+function findOdd(inputArray) {
   
-  for( let i=0; i<OperA.length; i++) {     
+  for( let i=0; i<inputArray.length; i++) {     
       let oddCounter = 0; 
 	  
-      for (let t=0; t<OperA.length; t++) {
-        if (OperA[t] == OperA[i]) { oddCounter++;} 
+      for (let t=0; t<inputArray.length; t++) {
+        if (inputArray[t] == inputArray[i]) { oddCounter++;} 
       }
       if (oddCounter%2 !== 0) {
-        return OperA[i];
+        return inputArray[i];
       }
   }
 }
 
-/* Given an array, find the odd int that appears biggest and an odd number of times. */
+/* 
+Given an array, find the odd int that appears biggest and an odd number of times. 
+*/
 
-function findOdd(A) {
-  //happy coding!
-  let OperA = A;
-  let oddCountBigrVale = 0;
+function findOdd(inputArray) {
+  let oddCountBigestVale = 0;
   
-  for( let i=0; i<OperA.length; i++) {
-    if (OperA[i]%2 !== 0) {
+  for( let i=0; i<inputArray.length; i++) {
+    if (inputArray[i]%2 !== 0) {
 		
 	  let oddCounter = 0;
-      for (let t=0; t<OperA.length; t++) {
-        if (OperA[t] == OperA[i]) { oddCounter++;} 
+      for (let t=0; t<inputArray.length; t++) {
+        if (inputArray[t] == inputArray[i]) { oddCounter++;} 
       }
       if (oddCounter%2 !== 0) {
-        if (oddCounter > oddCountBigrVale) { 
-			oddCountBigrVale = OperA[i];
-		}
+        if (oddCounter > oddCountBigestVale) { 
+      			oddCountBigestVale = inputArray[i];
+      		}
       }
     }
   }
-  return oddCountBigrVale;
+  return oddCountBigestVale;
 }
