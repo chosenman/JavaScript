@@ -16,6 +16,7 @@ function findOdd(inputArray) {
       }
   }
 }
+// console.log(findOdd([1,1,1,22,22,4,5,5,5,5,5]))
 
 /* 
 Given an array, find the odd int that appears biggest and an odd number of times. 
@@ -40,3 +41,4 @@ function findOddBiggestTimes(inputArray) {
   }
   return oddCountBigestTimesVale;
 }
+// console.log(findOddBiggestTimes([1,1,1,22,22,4,5,5,5,5,5]))
