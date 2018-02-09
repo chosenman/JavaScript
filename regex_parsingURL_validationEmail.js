@@ -30,21 +30,18 @@
     // --------------------
     // parsing url in node js
     // --------------------
-        // regex with groups: protocol, domain, zone, port, suburl, hashtag
+        // regex with target groups: protocol, domain, zone, port, suburl, hashtag
         var urlRegex = /(http|https):\/\/([a-zA-Z-]+).([a-z]{2,}):?([0-9]{4})?((\/[a-zA-Z0-9?=]+){0,})(#[a-zA-Z0-9_-]{0,})?/g;
     
         // here the result will be stored
         var result = {};
         function parser(
+                    // pattern
                     match, 
+                    // regex target groups:
                      protocol, domain,  zone,  port, suburl, hashtag
                     ){
-                    var prot = protocol,
-                        dom = domain,
-                        zone = zone,
-                        p = port,
-                        surl = suburl,
-                        htag = hashtag;
+            
                     result =  {
                              protocol: protocol, 
                              domain: domain, 
