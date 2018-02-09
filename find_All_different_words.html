@@ -6,55 +6,51 @@
 </head>
 <body>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 /*
- * Complete the function below.
+ * Given to strings, we need to find only different words. Words which don't intersect (don't appear in both strings).
  */
 
-// array of words maker
-function arrayOfWords(string){
-    console.log(string);
-    var arr = [];
-    var w = "";
-
-    for(var i=0; i < string.length; i++){
+    function findDifferentWords(s, t) {
+        // making an array of words from "s" and "t"
+        var sArray = sentenceToArrayConverter(s);
+        var tArray = sentenceToArrayConverter(t);
         
+        var findDifferentWords = [];
 
-        if( string[i].charCodeAt(0) != 32) {
-            // console.log("adding: " + string[i]);
-            w = w + string[i];
-        } 
-        if (string[i].charCodeAt(0) == 32 || i == string.length-1){
-
-            // console.log(w);
-            arr.push(w);
-            w = "";
+        for (var i=0; i< sArray.length; i++){
+            if( tArray.indexOf(sArray[i]) == -1 ) {
+                findDifferentWords.push(sArray[i]);
+            }
         }
+        return findDifferentWords
+        
     }
-    
-    return arr
-}
 
-function missingWords(s, t) {
-    // making an array of words from "s" and "t"
-    sArray = arrayOfWords(s);
-    
-    tArray = arrayOfWords(t);
-    
-    missingWords = [];
+    // array of words maker
+        function sentenceToArrayConverter(string){
+            console.log(string);
+            var arr = [];
+            var w = "";
 
-    for (var i=0; i< sArray.length; i++){
-        if( tArray.indexOf(sArray[i]) == -1 ) {
-            missingWords.push(sArray[i]);
+            for(var i=0; i < string.length; i++){
+                // this is not a whitespace
+                if( string[i].charCodeAt(0) != 32) {
+                    w = w + string[i];
+                } 
+                if (string[i].charCodeAt(0) == 32 || i == string.length-1 && w != ''){
+                    arr.push(w);
+                    w = "";
+                }
+            }
+            
+            return arr
         }
-    }
-    return missingWords
-    
-}
 
 
-console.log( missingWords("This is a sentence with words", "This sentence") );
-    </script>
+    console.log( findDifferentWords("This is a sentence with words", "This sentence") );
+
+</script>
 
 </body>
 </html>
