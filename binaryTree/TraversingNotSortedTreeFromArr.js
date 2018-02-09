@@ -16,9 +16,9 @@ return its level order traversal as:
 */
     
     function orderTranversal(inputArray){
-        var outputArray = [];
-        var numb = 1;
-        var index = 0;
+        var outputArray = [],
+            numb = 1,
+            index = 0;
 
         while(inputArray[index]!== undefined){
             outputArray.push( helper(numb, inputArray, outputArray, index) );
