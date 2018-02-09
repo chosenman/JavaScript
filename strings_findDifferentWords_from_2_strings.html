@@ -8,9 +8,8 @@
 
 <script type="text/javascript">
 /*
- * Given to strings, we need to find only different words. Words which don't intersect (don't appear in both strings).
+ * Given two strings, we need to find only different words. Words which don't intersect (don't appear in both strings).
  */
-
     function findDifferentWords(s, t) {
         // making an array of words from "s" and "t"
         var sArray = sentenceToArrayConverter(s);
@@ -29,16 +28,15 @@
 
     // array of words maker
         function sentenceToArrayConverter(string){
-            console.log(string);
-            var arr = [];
-            var w = "";
+            var arr = [],
+                w = "";
 
             for(var i=0; i < string.length; i++){
                 // this is not a whitespace
                 if( string[i].charCodeAt(0) != 32) {
                     w = w + string[i];
                 } 
-                if (string[i].charCodeAt(0) == 32 || i == string.length-1 && w != ''){
+                if ( (string[i].charCodeAt(0) == 32 || i == string.length-1) && w.length != 0 ){
                     arr.push(w);
                     w = "";
                 }
@@ -48,7 +46,7 @@
         }
 
 
-    console.log( findDifferentWords("This is a sentence with words", "This sentence") );
+    console.log( findDifferentWords(" This is a sentence with words", "This sentence") );
 
 </script>
 
