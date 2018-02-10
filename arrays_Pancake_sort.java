@@ -28,21 +28,22 @@ class Solution {
     
   }
   
-  static int[] flip(int [] arr , int k ){
-    int endIndex = k;
-    for(int i = 0 ; i <=  k ; i ++, endIndex--){
+  // flip function flips order in given range (first k elems) of array
+    static int[] flip(int [] arr , int k ){
+      int endIndex = k;
+      for(int i = 0 ; i <=  k ; i ++, endIndex--){
 
-      if( endIndex != i && endIndex > i ) {
-        int swap = arr[i];
-        arr[i] = arr[endIndex];
-        arr[endIndex] = swap;
-      } else {
-        break;
+        if( endIndex != i && endIndex > i ) {
+          int swap = arr[i];
+          arr[i] = arr[endIndex];
+          arr[endIndex] = swap;
+        } else {
+          break;
+        }
+
       }
-
+      return arr;
     }
-    return arr;
-  }
 
   public static void main(String[] args) {
 
