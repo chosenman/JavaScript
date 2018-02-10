@@ -42,7 +42,7 @@
             else if ( arr[middle] < value ) {
               // we don't want to go out of the right corner of the array
               if( middle != arr.length-1 ) {
-                start = middle + 1; // 2   
+                start = middle + 1;   
               } else { 
                   break 
               }
