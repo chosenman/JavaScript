@@ -21,8 +21,8 @@ function findDuplicates(arr1, arr2) {
   return outputArray
   
 }
-  //                                 0     2       4 -- middle = 
- //                       20   in    [3, 6, 7, 8, 20]
+//                                 0     2       4 -- middle = 
+//                       20   in    [3, 6, 7, 8, 20]
 //                                          .  3   4
 //                        2 +   (4-2)/2 = 3
 //                        8 < 20 -- start = 3
