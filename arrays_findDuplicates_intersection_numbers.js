@@ -1,48 +1,61 @@
-
+(function main() {
+// for example there are two arrays and we should return intersected numbers
 // arr1 = [1, 2, 3, 5, 6, 7], arr2 = [3, 6, 7, 8, 20]
-//.              -     -  -           -  -  -
-// i should output [ 3, 6, 7]
-// 
-var unsorted = [ 4, 323, 66, 78,1, 21];
+//.              -     -  -           -  -  -          <-- there are our numbers
+// we should output [ 3, 6, 7]
+    
+    var arr1 = [1, 2, 3, 5, 6, 7], 
+        arr2 = [3, 6, 7, 8, 20];
 
-var arr1 = [1, 2, 3, 5, 6, 7], 
-    arr2 = [3, 6, 7, 8, 20];
+    function findDuplicates(arr1, arr2) {
+      var outputArray = [];
 
-function findDuplicates(arr1, arr2) {
-  var N = arr1.length;
-  var M = arr2.length;
-  var outputArray = [];
-  // your code goes here
-  for (var i = 0; i< N; i++){
-    if( arr2.indexOf(arr1[i]) != -1 ) {
-      outputArray.push(arr1[i]);
+      for (var i = 0; i< arr1.length; i++){
+        if( findIndex(arr2, arr1[i]) != null ) {
+          outputArray.push(arr1[i]);
+        }
+      }
+      return outputArray
     }
-  }
-  return outputArray
-  
-}
-//                                 0     2       4 -- middle = 
-//                       20   in    [3, 6, 7, 8, 20]
-//                                          .  3   4
-//                        2 +   (4-2)/2 = 3
-//                        8 < 20 -- start = 3
-function findIndex(arr, value){
-  var start = 0;
-  var end = arr.length-1;
-  var middle;
-  //.     2   < 4
-  while(start < end){
-    middle = Math.round( (start + end)/2 ) ; // 0.5 --> 0
-    if(arr[middle] > value){
-      end = middle;
-    } else if (arr[middle] < value) {
-      start = middle; // 2
-    } else { // equal
-      return middle;
-    }
-  }
-  
-  return null;
-}
+    
+    // find index helper function
+        function findIndex(arr, value){
+          var start = 0,                // start of range for seach
+              end = arr.length-1,       // end for range for search
+              middle;                   // middle
+          //
+          while(start != end){
+            middle = Math.floor( (start + end)/2 ) ; // 3
+            if( arr[middle] == value){
+                return middle;
+            } 
+            // going on the left
+            else if( arr[middle] > value ){
+              // we don't want to go out of the left corner of the array
+              if( middle != 0 ) {
+                  end = middle - 1;
+              } else { 
+                  break 
+              }
+            } 
+            // going on the right
+            else if ( arr[middle] < value ) {
+              // we don't want to go out of the right corner of the array
+              if( middle != arr.length-1 ) {
+                start = middle + 1; // 2   
+              } else { 
+                  break 
+              }
+            } 
+          }
+          if( start == end && arr[start] == value ) {
+              return start;
+          }
+          return null;
+        }
 
 console.log( findDuplicates(arr1, arr2) )
+    
+    
+    
+}());
