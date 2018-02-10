@@ -25,7 +25,7 @@
               middle;                   // middle
           //
           while(start != end){
-            middle = Math.floor( (start + end)/2 ) ; // 3
+            middle = Math.floor( (start + end)/2 ) ; 
             if( arr[middle] == value){
                 return middle;
             } 
