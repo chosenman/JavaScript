@@ -1,6 +1,3 @@
-
-
-
 function pancakeSort(arr){
 
 	for (var length = arr.length; length >= 0; length--) {
@@ -25,7 +22,7 @@ function pancakeSort(arr){
 	function flip(arr, k){
 		var endIndex = k;
 
-		for (var i = 0; i <= k; i++; endIndex--) {
+		for (var i = 0; i <= k; i++ ) {
 			if( endIndex != i && endIndex >i ){
 				var swap = arr[i];
 				arr[i] = arr[endIndex];
@@ -33,14 +30,9 @@ function pancakeSort(arr){
 			} else {
 				break;
 			}
+			endIndex--
 		}
 	}
 
 	console.log( pancakeSort([1, 5, 4, 3, 2]) );
-
-
-
-
-
-
 
