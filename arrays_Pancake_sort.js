@@ -1,5 +1,5 @@
 function pancakeSort(arr){
-
+    
 	for (var length = arr.length; length >= 0; length--) {
 		var biggestValue = arr[0];
 		var biggestIndex = 0;
@@ -32,7 +32,7 @@ function pancakeSort(arr){
 			}
 			endIndex--
 		}
+		return arr;
 	}
 
-	console.log( pancakeSort([1, 5, 4, 3, 2]) );
-
+	console.log( pancakeSort( [1, 5, 4, 3, 2] ) );
